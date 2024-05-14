@@ -34,7 +34,4 @@ jobs:
             sudo apt update
             sudo apt install -y nodejs npm
             cd home
-            git clone https://github.com/marcospallone-unibz/office_management.git
-            cd office_management
-            sudo npm install
-            npm start
+            sudo mv * /react
