@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH }}
-          source: '.next'
+          source: '.'
           target: '/home'
 
       - name: SSH into EC2 instance and restart app
