@@ -31,8 +31,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH }}
           script: |
-            sudo -rf /home
-            sudo mkdir home
-            cd home
+            rm -rf *
             git clone https://github.com/marcospallone-unibz/office_management.git
-            pm2 restart src/page.tsx
+            cd /office_management
+            npm install
+            npm start
