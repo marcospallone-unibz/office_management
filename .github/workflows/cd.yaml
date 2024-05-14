@@ -37,11 +37,6 @@ jobs:
             sudo systemctl start httpd
             sudo systemctl enable httpd
             cd home
-            sudo rm -rf /var/www/html/*
             sudo mv * /var/www/html
-            cd /var/www/html
-            sudo npm install -g npm@10.7.0
-            sudo npm install
-            sudo node server.js
 
 
