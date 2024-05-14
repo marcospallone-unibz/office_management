@@ -31,10 +31,10 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH }}
           script: |
-            sudo apt update
-            sudo apt install nodejs npm
             rm -rf *
             git clone https://github.com/marcospallone-unibz/office_management.git
-            cd /office_management
+            cd office_management
+            sudo apt update
+            sudo apt install npm
             npm install
             npm start
