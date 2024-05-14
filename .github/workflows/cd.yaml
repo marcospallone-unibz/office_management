@@ -24,16 +24,6 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Change Permissions on Target Directory
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH }}
-          port: 22
-          script: |
-            mkdir home
-
       - name: Transfer Files to EC2 Instance with Rsync
         uses: appleboy/ssh-action@master
         with:
