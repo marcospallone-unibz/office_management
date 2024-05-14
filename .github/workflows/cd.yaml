@@ -33,5 +33,6 @@ jobs:
           script: |
             sudo apt-get -y update
             sudo apt-get install -y nodejs npm
-            cd home
-            sudo mv * /react
+            git clone https://github.com/marcospallone-unibz/office_management.git
+            cd office_management
+            npm run dev
