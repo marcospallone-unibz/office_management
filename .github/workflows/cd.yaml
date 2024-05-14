@@ -38,4 +38,4 @@ jobs:
             cd office_management
             sudo npm install
             sudo lsof -ti:3000 | xargs sudo kill || true
-            pm2 start npm -- dev
+            npm start
