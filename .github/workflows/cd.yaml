@@ -31,14 +31,10 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH }}
           script: |
-            if [ ! -d "/home" ]; then
-              mkdir -p /home
-            fi
-            sudo rm -rf /home/*
+            sudo apt update
+            sudo apt install -y nodejs npm
             cd home
             git clone https://github.com/marcospallone-unibz/office_management.git
             cd office_management
-            sudo apt update
-            sudo apt install -y nodejs npm
             sudo npm install
             npm start
