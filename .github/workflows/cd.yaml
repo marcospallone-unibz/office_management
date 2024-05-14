@@ -37,4 +37,4 @@ jobs:
             git clone https://github.com/marcospallone-unibz/office_management.git
             cd office_management
             sudo npm install
-            pm2 start --name <app name> npm -- start
+            pm2 start --name fe npm -- start
