@@ -31,7 +31,11 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH }}
           script: |
-            rm -rf *
+            if [ ! -d "/home" ]; then
+              mkdir -p /home
+            fi
+            sudo rm -rf /home/*
+            cd home
             git clone https://github.com/marcospallone-unibz/office_management.git
             cd office_management
             sudo apt update
