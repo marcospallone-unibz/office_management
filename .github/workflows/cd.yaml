@@ -1,6 +1,5 @@
-name: Push-to-EC2
+name: Deploy Next.js App to EC2
 
-# Trigger deployment only on push to main branch
 on:
   push:
     branches:
@@ -8,35 +7,38 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the files
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH }}
-          REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.FOLDER }}
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      - name: Executing remote ssh commands using ssh key
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: Copy files to EC2 instance
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          source: '.next'
+          target: '/home'
+
+      - name: SSH into EC2 instance and restart app
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
-            sudo yum -y update
-            sudo yum install -y httpd
-            sudo yum install -y epel-release
-            sudo yum install -y nodejs npm
-            sudo systemctl start httpd
-            sudo systemctl enable httpd
-            cd home
-            sudo mv * /var/www/html
-
-
+            cd /home
+            pm2 restart your-app-name
