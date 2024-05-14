@@ -24,16 +24,6 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Transfer Files to EC2 Instance with Rsync
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH }}
-          port: 22
-          script: |
-            rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete-after ../.. ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/home
-
       - name: SSH into EC2 instance and restart app
         uses: appleboy/ssh-action@master
         with:
@@ -41,5 +31,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH }}
           script: |
+            if [ ! -d "/var/www/html/my_folder" ]; then
+              mkdir -p /var/www/html/my_folder
+            fi
             cd /home
+            git pull origin main
             pm2 restart src/page.tsx
