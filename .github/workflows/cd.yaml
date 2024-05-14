@@ -35,6 +35,6 @@ jobs:
             git clone https://github.com/marcospallone-unibz/office_management.git
             cd office_management
             sudo apt update
-            sudo apt install npm
-            npm install
+            sudo apt install -y nodejs npm
+            sudo npm install
             npm start
