@@ -39,4 +39,4 @@ jobs:
             sudo npm install
             sudo lsof -ti:3000 | xargs sudo kill || true
             npm run build
-            npm start
+            sudo pm2 start ecosystem.config.js --env production
