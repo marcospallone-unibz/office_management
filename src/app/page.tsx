@@ -16,11 +16,15 @@ export default function Home() {
     }
   }
 
+  const handleClick = () => {
+    getFromAPI();
+  }
+
 
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <button onClick={() => (getFromAPI())}>CLICCA</button>
+        <button onClick={handleClick}>CLICCA</button>
       </div>
     </main>
   );
