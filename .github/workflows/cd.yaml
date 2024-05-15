@@ -24,6 +24,14 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
+        - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.FOLDER }}
+
       - name: SSH into EC2 instance and restart app
         uses: appleboy/ssh-action@master
         with:
@@ -31,16 +39,12 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH }}
           script: |
-            if [ ! -d "/home" ]; then
-              mkdir -p /home
-            fi
-            sudo rm -rf /home/*
             sudo apt-get -y update
             sudo apt-get install -y nodejs npm
             sudo npm install pm2@latest -g
             cd home
-            git clone https://github.com/marcospallone-unibz/office_management.git
-            cd office_management
+            sudo mv * /om
+            cd om
             sudo npm install
             sudo lsof -ti:3000 | xargs sudo kill || true
             npm run build
