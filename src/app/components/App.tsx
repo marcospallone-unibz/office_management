@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 
 const App = () => {
 
     const [res, setRes] = useState('NULL');
+    const router = useRouter()
 
     const fetchData = async () => {
         try {
