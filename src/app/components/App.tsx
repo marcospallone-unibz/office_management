@@ -25,7 +25,7 @@ const App = () => {
     return (
         <div>
             {/* <button onClick={handleLogin}>LOGIN</button> */}
-            <Link href={'/register'}>REGISTRATI</Link>
+            <Link href={'/registration'}>REGISTRATI</Link>
             <div>{res}</div>
         </div>
     );
