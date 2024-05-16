@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import router from 'next/router';
 
 const App = () => {
 
@@ -17,14 +18,18 @@ const App = () => {
         }
     };
 
-    const handleClick = () => {
-        setRes('requesting')
-        fetchData(); // Chiamata alla funzione fetchData al click del bottone
-    };
+    const handleLogin = () => {
+
+    }
+
+    const handleRegister = () => {
+        router.push('/register');
+    }
 
     return (
         <div>
-            <button onClick={handleClick}>Fai una richiesta!</button>
+            <button onClick={handleLogin}>LOGIN</button>
+            <button onClick={handleRegister}>REGISTRATI</button>
             <div>{res}</div>
         </div>
     );
