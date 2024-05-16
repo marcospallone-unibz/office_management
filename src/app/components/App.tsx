@@ -7,7 +7,7 @@ const App = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:3001');
+            const response = await axios.get('http://54.80.75.250:3000');
             // Gestione della risposta
             console.log(response.data)
             setRes(response.data);
