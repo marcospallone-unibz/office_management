@@ -1,7 +1,7 @@
 import Register from "../components/Register";
 
 
-export default function Home() {
+export default function Registration() {
   return (
     <Register></Register>
   );
