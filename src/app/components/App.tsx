@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const App = () => {
 
@@ -23,14 +24,10 @@ const App = () => {
 
     }
 
-    const handleRegister = () => {
-        router.push('/register');
-    }
-
     return (
         <div>
-            <button onClick={handleLogin}>LOGIN</button>
-            <button onClick={handleRegister}>REGISTRATI</button>
+            {/* <button onClick={handleLogin}>LOGIN</button> */}
+            <Link href={'/register'}>REGISTRATI</Link>
             <div>{res}</div>
         </div>
     );
