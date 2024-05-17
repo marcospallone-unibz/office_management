@@ -1,39 +1,45 @@
-import { useRouter } from "next/navigation";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 
 const Register = () => {
 
+    const [formData, setFormData] = useState({
+        name: '',
+        surname: '',
+        email: '',
+        password: ''
+    });
 
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const router = useRouter();
+    const handleChange = (e: any) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
-    useEffect(() => {
-        // Questo codice verrà eseguito solo lato client
-    }, []);
+    const postData = async (url: string, data: any) => {
+        try {
+          const response = await axios.post(url, data);
+          return response.data;
+        } catch (error) {
+          console.error('Error posting data:', error);
+          throw error;
+        }
+      };
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        const url = 'http://54.242.208.130:3000/newUser'; // Sostituisci con il tuo endpoint backend
 
-        const res = await fetch('http://54.242.208.130:3000/newUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, surname, email, password }),
-        });
-
-        const data = await res.json();
-        if (res.ok) {
-            setMessage('User created successfully!');
-            // Reindirizza l'utente alla homepage dopo aver creato l'utente
-            router.push('/');
-        } else {
-            setMessage('Error creating user: ' + data.error);
+        try {
+            const result = await postData(url, formData);
+            console.log('Data successfully posted:', result);
+            // Fai qualcosa con il risultato, ad esempio aggiornare lo stato o visualizzare un messaggio
+        } catch (error) {
+            console.error('Error posting data:', error);
+            // Gestisci l'errore, ad esempio visualizzando un messaggio di errore
         }
     };
 
@@ -45,8 +51,8 @@ const Register = () => {
                     <label>Name:</label>
                     <input
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={formData.name}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -54,8 +60,8 @@ const Register = () => {
                     <label>Surname:</label>
                     <input
                         type="text"
-                        value={surname}
-                        onChange={(e) => setSurname(e.target.value)}
+                        value={formData.surname}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -63,8 +69,8 @@ const Register = () => {
                     <label>Email:</label>
                     <input
                         type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.email}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -72,14 +78,13 @@ const Register = () => {
                     <label>Password:</label>
                     <input
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={formData.password}
+                        onChange={handleChange}
                         required
                     />
                 </div>
                 <button type="submit">Create User</button>
             </form>
-            {message && <p>{message}</p>}
         </div>
     );
 };
