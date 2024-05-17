@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const App = () => {
 
     const [res, setRes] = useState('NULL');
+    const router = useRouter()
 
     const fetchData = async () => {
         try {
@@ -22,11 +24,14 @@ const App = () => {
 
     }
 
+    const handleRegister = () => {
+        router.push('/');
+    }
+
     return (
         <div>
-            {/* <button onClick={handleLogin}>LOGIN</button> */}
-            <Link href={'/registration'}>REGISTRATI</Link>
-            <div>{res}</div>
+            <Link href={''}>LOGIN</Link>
+            <Link href={'/om/register'}>REGISTRATI</Link>
         </div>
     );
 };
