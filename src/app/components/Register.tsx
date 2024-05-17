@@ -21,13 +21,13 @@ const Register = () => {
 
     const postData = async (url: string, data: any) => {
         try {
-          const response = await axios.post(url, data);
-          return response.data;
+            const response = await axios.post(url, data);
+            return response.data;
         } catch (error) {
-          console.error('Error posting data:', error);
-          throw error;
+            console.error('Error posting data:', error);
+            throw error;
         }
-      };
+    };
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -50,6 +50,7 @@ const Register = () => {
                 <div>
                     <label>Name:</label>
                     <input
+                        name="name"
                         type="text"
                         value={formData.name}
                         onChange={handleChange}
@@ -59,6 +60,7 @@ const Register = () => {
                 <div>
                     <label>Surname:</label>
                     <input
+                        name="surname"
                         type="text"
                         value={formData.surname}
                         onChange={handleChange}
@@ -68,6 +70,7 @@ const Register = () => {
                 <div>
                     <label>Email:</label>
                     <input
+                        name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
@@ -77,6 +80,7 @@ const Register = () => {
                 <div>
                     <label>Password:</label>
                     <input
+                        name="password"
                         type="password"
                         value={formData.password}
                         onChange={handleChange}
