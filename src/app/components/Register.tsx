@@ -31,7 +31,7 @@ const Register = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const url = 'http://54.242.208.130:3000/newUser'; // Sostituisci con il tuo endpoint backend
+        const url = 'http://54.242.21.157:3000/register'; // Sostituisci con il tuo endpoint backend
 
         try {
             const result = await postData(url, formData);
