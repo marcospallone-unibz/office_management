@@ -2,11 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 
-const Register = () => {
+const Login = () => {
 
     const [formData, setFormData] = useState({
-        name: '',
-        surname: '',
         email: '',
         password: ''
     });
@@ -31,7 +29,7 @@ const Register = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const url = 'http://54.242.208.130:3000/newUser'; // Sostituisci con il tuo endpoint backend
+        const url = 'http://54.242.208.130:3000/login'; // Sostituisci con il tuo endpoint backend
 
         try {
             const result = await postData(url, formData);
@@ -45,28 +43,8 @@ const Register = () => {
 
     return (
         <div>
-            <h1>Create User</h1>
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name:</label>
-                    <input
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Surname:</label>
-                    <input
-                        name="surname"
-                        type="text"
-                        value={formData.surname}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
                 <div>
                     <label>Email:</label>
                     <input
@@ -87,10 +65,10 @@ const Register = () => {
                         required
                     />
                 </div>
-                <button type="submit">REGISTRATI</button>
+                <button type="submit">LOGIN</button>
             </form>
         </div>
     );
 };
 
-export default Register;
+export default Login;
