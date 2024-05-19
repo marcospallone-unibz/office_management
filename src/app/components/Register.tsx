@@ -1,5 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { register } from './../utils/getAPIData';
 
 
 const Register = () => {
@@ -19,29 +20,9 @@ const Register = () => {
         }));
     };
 
-    const postData = async (url: string, data: any) => {
-        try {
-            console.log(data)
-            const response = await axios.post(url, data);
-            return response.data;
-        } catch (error) {
-            console.error('Error posting data:', error);
-            throw error;
-        }
-    };
-
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const url = 'http://54.87.175.86:3000/register'; // Sostituisci con il tuo endpoint backend
-
-        try {
-            const result = await postData(url, formData);
-            console.log('Data successfully posted:', result);
-            // Fai qualcosa con il risultato, ad esempio aggiornare lo stato o visualizzare un messaggio
-        } catch (error) {
-            console.error('Error posting data:', error);
-            // Gestisci l'errore, ad esempio visualizzando un messaggio di errore
-        }
+        register(formData)
     };
 
     return (

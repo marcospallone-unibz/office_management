@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { login } from "../utils/getAPIData";
 
 
 const Login = () => {
@@ -17,28 +17,9 @@ const Login = () => {
         }));
     };
 
-    const postData = async (url: string, data: any) => {
-        try {
-            const response = await axios.post(url, data);
-            return response.data;
-        } catch (error) {
-            console.error('Error posting data:', error);
-            throw error;
-        }
-    };
-
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const url = 'http://54.87.175.86:3000/login'; // Sostituisci con il tuo endpoint backend
-
-        try {
-            const result = await postData(url, formData);
-            console.log('Data successfully posted:', result);
-            // Fai qualcosa con il risultato, ad esempio aggiornare lo stato o visualizzare un messaggio
-        } catch (error) {
-            console.error('Error posting data:', error);
-            // Gestisci l'errore, ad esempio visualizzando un messaggio di errore
-        }
+        login(formData)
     };
 
     return (
