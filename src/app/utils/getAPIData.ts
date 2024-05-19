@@ -1,7 +1,5 @@
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
-const router = useRouter();
 const url = 'http://54.87.175.86:3000/';
 
 const getData = async (endpoint: string) => {
@@ -17,7 +15,8 @@ const getData = async (endpoint: string) => {
 const postData = async (endpoint: string, data: any) => {
     try {
         console.log(data)
-        await axios.post(endpoint, data);
+        const results = await axios.post(endpoint, data);
+        return results;
     } catch (error) {
         console.error('Error posting data:', error);
         throw error;
@@ -26,9 +25,8 @@ const postData = async (endpoint: string, data: any) => {
 
 export const register = async (formData: any) => {
     try {
-        const result = await postData(url+'register', formData);
-        console.log('Data successfully posted:', result);
-        router.push('/');
+        const results = await postData(url+'register', formData);
+        return results
     } catch (error) {
         console.error('Error posting data:', error);
     }

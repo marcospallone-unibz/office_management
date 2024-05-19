@@ -22,7 +22,8 @@ const Register = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        register(formData)
+        var results = register(formData);
+        console.log(results)
     };
 
     return (
