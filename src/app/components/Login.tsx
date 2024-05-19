@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { login } from "../utils/getAPIData";
+import { useRouter } from "next/navigation";
 
 
 const Login = () => {
+
+    const router = useRouter();
 
     const [formData, setFormData] = useState({
         email: '',
@@ -19,7 +22,12 @@ const Login = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        login(formData)
+        var results = await login(formData);
+        if(results?.data?.code == 200){
+            router.push('/dashboard')
+        } else {
+            alert('ERRORE NELLA RICHIESTA')
+        }
     };
 
     return (

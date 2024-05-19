@@ -5,6 +5,8 @@ import { register } from './../utils/getAPIData';
 
 const Register = () => {
 
+    const router = useRouter();
+
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
@@ -22,8 +24,12 @@ const Register = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        var results = register(formData);
-        console.log(results)
+        var results = await register(formData);
+        if(results?.data?.code == 200){
+            router.push('/')
+        } else {
+            alert('ERRORE NELLA RICHIESTA')
+        }
     };
 
     return (

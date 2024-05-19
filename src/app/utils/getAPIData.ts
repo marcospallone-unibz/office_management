@@ -34,8 +34,8 @@ export const register = async (formData: any) => {
 
 export const login = async (formData: any) => {
     try {
-        const result = await postData(url+'login', formData);
-        console.log('Data successfully posted:', result);
+        const results = await postData(url+'login', formData);
+        return results;
     } catch (error) {
         console.error('Error posting data:', error);
     }
