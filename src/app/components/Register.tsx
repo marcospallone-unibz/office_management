@@ -21,6 +21,7 @@ const Register = () => {
 
     const postData = async (url: string, data: any) => {
         try {
+            console.log(data)
             const response = await axios.post(url, data);
             return response.data;
         } catch (error) {
@@ -31,7 +32,7 @@ const Register = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const url = 'http://54.242.21.157:3000/register'; // Sostituisci con il tuo endpoint backend
+        const url = 'http://54.87.175.86:3000/register'; // Sostituisci con il tuo endpoint backend
 
         try {
             const result = await postData(url, formData);
