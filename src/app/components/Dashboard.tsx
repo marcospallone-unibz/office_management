@@ -11,7 +11,7 @@ const Dashboard = (data: any) => {
     const [offices, setOffices] = useState([]);
 
     const getData = async () => {
-        const results = await getOffices(searchParams.get('t'))
+        const results = await getOffices(searchParams.get('id'))
         console.log(results)
     }
 

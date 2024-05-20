@@ -25,7 +25,7 @@ const Login = () => {
         e.preventDefault();
         var results = await login(formData);
         if(results?.data?.code == 200){
-            router.push('/om/dashboard?t='+results?.data?.token)
+            router.push('/om/dashboard?id='+results?.data?.id)
         } else {
             alert('ERRORE NELLA RICHIESTA')
         }

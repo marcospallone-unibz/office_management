@@ -25,7 +25,7 @@ const postData = async (endpoint: string, data: any) => {
 
 export const register = async (formData: any) => {
     try {
-        const results = await postData(url + 'register', formData);
+        const results = await postData(url+'register', formData);
         return results
     } catch (error) {
         console.error('Error posting data:', error);
@@ -34,20 +34,20 @@ export const register = async (formData: any) => {
 
 export const login = async (formData: any) => {
     try {
-        const results = await postData(url + 'login', formData);
+        const results = await postData(url+'login', formData);
         return results;
     } catch (error) {
         console.error('Error posting data:', error);
     }
 }
 
-export const getOffices = async (token: any) => {
+export const getOffices = async (id:any) => {
     try {
         const result = await axios.get(url + 'offices', {
-            headers: {
-                'Authorization': `Bearer ${token}` // Includi il token nell'intestazione
+            params: {
+                id: id
             }
-        });
+        })
         return result;
     } catch (error) {
         console.error('Error posting data:', error);
