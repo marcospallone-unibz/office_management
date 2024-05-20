@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../utils/getAPIData";
 import { useRouter } from "next/navigation";
+import Dashboard from "./Dashboard";
 
 
 const Login = () => {
@@ -24,7 +25,7 @@ const Login = () => {
         e.preventDefault();
         var results = await login(formData);
         if(results?.data?.code == 200){
-            router.push('/dashboard')
+            router.push('/om/dashboard?t='+results?.data?.token)
         } else {
             alert('ERRORE NELLA RICHIESTA')
         }
