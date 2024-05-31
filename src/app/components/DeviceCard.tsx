@@ -33,10 +33,10 @@ const DeviceCard = ({ device }: any) => {
     if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Box component={'div'} onClick={navigate} sx={{textAlign:'center'}}>
-            <Box sx={{ padding: '1rem' }}>
+        <Box component={'div'} onClick={navigate} sx={{textAlign:'center', cursor:'pointer', display: 'flex', minHeight: '125px'}}>
+            <Box sx={{ padding: '1rem', display:'flex', flexDirection: 'column', flex: 1, justifyContent:'space-between' }}>
                 <Box><Typography>{device?.name}</Typography></Box>
-                <Button className='button elimina' onClick={handleDelete}>Elimina</Button>
+                <Button className='button elimina' onClick={handleDelete} sx={{width:' fit-content', marginLeft:'auto', marginRight: 'auto'}}>Elimina</Button>
             </Box>
         </Box>
     );

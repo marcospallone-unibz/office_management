@@ -33,7 +33,7 @@ const Dashboard = () => {
             </Box>
             <Box sx={{ marginTop: '1rem', display: 'flex' }}>
                 {offices?.map((office, i) => (
-                    <Box key={i} sx={{ marginTop: '1rem', marginLeft: '1rem', maxWidth: '200px', border: '0.5px solid #E6E2DD', borderRadius: '10px' }}>
+                    <Box key={i} sx={{ marginTop: '1rem', marginLeft: '1rem', width:'200px', maxWidth: '200px', border: '0.5px solid #E6E2DD', borderRadius: '10px' }}>
                         <OfficeCard office={office}></OfficeCard>
                     </Box>
                 ))}

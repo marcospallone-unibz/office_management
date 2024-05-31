@@ -38,10 +38,10 @@ const OfficeCard = (data: any) => {
     if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Box component={'div'} onClick={navigate} sx={{textAlign:'center', padding:'1.5rem', cursor: 'pointer'}}>
-            <Box>
+        <Box component={'div'} onClick={navigate} sx={{textAlign:'center', cursor: 'pointer', minHeight:'100%', display:'flex'}}>
+            <Box sx={{ padding: '1rem', display:'flex', flexDirection: 'column', flex: 1, justifyContent:'space-between'}}>
                 <Box><Typography>{office?.name}</Typography></Box>
-                <Box><Button className='button elimina' sx={{marginTop: '1rem'}} onClick={handleDelete}>Elimina</Button></Box>
+                <Box><Button className='button elimina' sx={{}} onClick={handleDelete}>Elimina</Button></Box>
             </Box>
         </Box>
     );
