@@ -27,7 +27,7 @@ const OfficeForm = (data: any) => {
         name: '',
         city: '',
         address: '',
-        company: localStorage.getItem('company')
+        company: typeof window !== 'undefined' ? localStorage.getItem('company') : null
     });
 
     const handleChange = (e: any) => {
