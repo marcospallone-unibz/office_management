@@ -2,6 +2,7 @@
 
 import DeviceForm from "@/app/components/DeviceForm";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 
 export default function AddOffice() {
@@ -9,6 +10,6 @@ export default function AddOffice() {
   const searchParams = useSearchParams()
 
   return (
-    <DeviceForm officeID={Number(searchParams.get('officeID'))}></DeviceForm>
+    <Suspense><DeviceForm officeID={Number(searchParams.get('officeID'))}></DeviceForm></Suspense>
   );
 }

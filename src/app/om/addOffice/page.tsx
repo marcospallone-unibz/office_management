@@ -1,10 +1,11 @@
 "use client";
 
 import OfficeForm from "@/app/components/OfficeForm";
+import { Suspense } from "react";
 
 export default function AddOffice() {
 
   return (
-    <OfficeForm></OfficeForm>
+    <Suspense><OfficeForm></OfficeForm></Suspense>
   );
 }
