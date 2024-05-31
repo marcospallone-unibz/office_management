@@ -42,10 +42,8 @@ jobs:
             sudo apt-get -y update
             sudo apt-get install -y nodejs npm
             sudo npm install pm2@latest -g
+            sudo mv * home
             cd home
-            mkdir om
-            sudo mv * om
-            cd om
             sudo npm install
             sudo lsof -ti:3000 | xargs sudo kill || true
             npm run build
