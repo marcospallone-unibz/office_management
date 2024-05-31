@@ -44,7 +44,7 @@ jobs:
             sudo npm install pm2@latest -g
             cd home
             mkdir om
-            sudo mv * /om
+            sudo mv * om
             cd om
             sudo npm install
             sudo lsof -ti:3000 | xargs sudo kill || true
