@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { newDevice } from '../utils/getAPIData';
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -19,12 +19,12 @@ const DeviceForm = ({ officeID }: any) => {
 
     useEffect(() => {
         if (loading) {
-            setTimeout(() => {
-                setLoading(false);
-                location.href = '/om/office?id=' + officeID;
-            }, 1800);
+          setTimeout(() => {
+          setLoading(false);
+          location.href = '/om/office?id=' + officeID;
+        }, 1800);
         }
-    }, [loading]);
+      }, [loading]);
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -41,27 +41,25 @@ const DeviceForm = ({ officeID }: any) => {
         location.href = '/om/office?id=' + officeID;
     };
 
-    if (loading) return <Box sx={{ textAlign: 'center', marginTop: '5rem' }}><CircularProgress></CircularProgress></Box>
+    if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Suspense>
-            <Box>
-                <h1 className="h1-title">Aggiungi dispositivo</h1>
-                <form onSubmit={handleSubmit}>
-                    <Box sx={{ padding: '1rem' }}>
-                        <Typography>Nome:</Typography>
-                        <input
-                            name="name"
-                            type="text"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </Box>
-                    <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Aggiungi</Button></Box>
-                </form>
-            </Box>
-        </Suspense>
+        <Box>
+            <h1 className="h1-title">Aggiungi dispositivo</h1>
+            <form onSubmit={handleSubmit}>
+                <Box sx={{ padding: '1rem' }}>
+                    <Typography>Nome:</Typography>
+                    <input
+                        name="name"
+                        type="text"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </Box>
+                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Aggiungi</Button></Box>
+            </form>
+        </Box>
     );
 };
 

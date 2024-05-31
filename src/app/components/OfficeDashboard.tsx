@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { getDevicesByOffice, getSingleOffice } from "../utils/getAPIData";
 import DeviceCard from "./DeviceCard";
 
@@ -33,24 +33,22 @@ const OfficeDashboard = () => {
   }, [devices])
 
   return (
-    <Suspense>
-      <Box sx={{ padding: '1rem' }}>
-        <Button className="button" href={"/om/addDevice?officeID=" + searchParams.get('id')}>Aggiungi dispositivo</Button>
-        <Box sx={{ marginTop: '2rem' }}>
-          <Typography>Ufficio: {office?.name}</Typography>
-          <Typography>Città: {office?.city}</Typography>
-          <Typography>Indirizzo: {office?.address}</Typography>
-        </Box>
-        <Box sx={{ marginTop: '3rem' }}>
-          <Typography>DISPOSITIVI:</Typography>
-          {devices?.map((device, i) => (
-            <Box key={i}>
-              <DeviceCard device={device}></DeviceCard>
-            </Box>
-          ))}
-        </Box>
+    <Box sx={{ padding: '1rem' }}>
+      <Button className="button" href={"/om/addDevice?officeID=" + searchParams.get('id')}>Aggiungi dispositivo</Button>
+      <Box sx={{ marginTop: '2rem' }}>
+        <Typography>Ufficio: {office?.name}</Typography>
+        <Typography>Città: {office?.city}</Typography>
+        <Typography>Indirizzo: {office?.address}</Typography>
       </Box>
-    </Suspense>
+      <Box sx={{ marginTop: '3rem' }}>
+        <Typography>DISPOSITIVI:</Typography>
+        {devices?.map((device, i) => (
+          <Box key={i}>
+            <DeviceCard device={device}></DeviceCard>
+          </Box>
+        ))}
+      </Box>
+    </Box>
   );
 };
 
