@@ -1,6 +1,6 @@
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { newOffice } from '../utils/getAPIData';
 
 const OfficeForm = (data: any) => {
@@ -50,42 +50,44 @@ const OfficeForm = (data: any) => {
     if (loading) return <Box sx={{ textAlign: 'center', marginTop: '5rem' }}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Box>
-            <h1 className='h1-title'>Aggiungi Ufficio</h1>
-            <form onSubmit={handleSubmit}>
-                <Box sx={{ padding: '1rem' }}>
-                    <Typography>Nome:</Typography>
-                    <input
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </Box>
-                <Box sx={{ padding: '1rem' }}>
-                    <Typography>Città:</Typography>
-                    <input
-                        name="city"
-                        type="text"
-                        value={formData.city}
-                        onChange={handleChange}
-                        required
-                    />
-                </Box>
-                <Box sx={{ padding: '1rem' }}>
-                    <Typography>Indirizzo:</Typography>
-                    <input
-                        name="address"
-                        type="text"
-                        value={formData.address}
-                        onChange={handleChange}
-                        required
-                    />
-                </Box>
-                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Aggiungi Ufficio</Button></Box>
-            </form>
-        </Box>
+        <Suspense>
+            <Box>
+                <h1 className='h1-title'>Aggiungi Ufficio</h1>
+                <form onSubmit={handleSubmit}>
+                    <Box sx={{ padding: '1rem' }}>
+                        <Typography>Nome:</Typography>
+                        <input
+                            name="name"
+                            type="text"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Box>
+                    <Box sx={{ padding: '1rem' }}>
+                        <Typography>Città:</Typography>
+                        <input
+                            name="city"
+                            type="text"
+                            value={formData.city}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Box>
+                    <Box sx={{ padding: '1rem' }}>
+                        <Typography>Indirizzo:</Typography>
+                        <input
+                            name="address"
+                            type="text"
+                            value={formData.address}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Box>
+                    <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Aggiungi Ufficio</Button></Box>
+                </form>
+            </Box>
+        </Suspense>
     );
 };
 
