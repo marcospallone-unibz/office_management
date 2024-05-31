@@ -8,9 +8,7 @@ import { Suspense } from "react";
 
 export default function AddOffice() {
 
-  const searchParams = useSearchParams()
-
   return (
-    <Suspense fallback={<CircularProgress></CircularProgress>}><DeviceForm officeID={Number(searchParams.get('officeID'))}></DeviceForm></Suspense>
+    <Suspense fallback={<CircularProgress></CircularProgress>}><DeviceForm></DeviceForm></Suspense>
   );
 }

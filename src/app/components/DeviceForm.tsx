@@ -1,21 +1,27 @@
 import Button from "@mui/material/Button";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { newDevice } from '../utils/getAPIData';
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useSearchParams } from "next/navigation";
 
-const DeviceForm = ({ officeID }: any) => {
+const DeviceForm = () => {
 
-    const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [officeID, setOfficeID] = useState<any>(null);
+
+    const searchParams = useSearchParams();
 
     const [formData, setFormData] = useState({
         name: '',
         state: false,
         office: officeID,
     });
+
+    useEffect(() => {
+        setOfficeID(searchParams.get('id'))
+      }, [])
 
     useEffect(() => {
         if (loading) {
