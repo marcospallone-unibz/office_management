@@ -14,8 +14,8 @@ const DeviceDashboard = () => {
     useEffect(() => {
         const getDevice = async () => {
             const results = await getSingleDevice(searchParams.get('id'))
-            console.log(results?.data)
-            setDevice(results?.data?.device[0])
+            console.log(results?.data[0])
+            setDevice(results?.data[0])
         }
         getDevice();
     }, [])
