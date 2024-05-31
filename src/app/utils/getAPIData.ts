@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'http://54.198.12.73:3000/';
+const url = 'http://3.90.33.180:3000/';
 
 const postData = async (endpoint: string, data: any) => {
     try {

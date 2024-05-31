@@ -29,12 +29,11 @@ const Dashboard = () => {
     return (
         <Box>
             <Box sx={{ padding: '1rem' }}>
-                <Button className="button" href={'/om/addOffice'}>Aggiungi Ufficio</Button>
+                <Button className="button" href={'/om/addOffice'}>Nuovo Ufficio</Button>
             </Box>
             <Box sx={{ marginTop: '1rem', padding: '1rem' }}>
-                <Typography>UFFICI:</Typography>
                 {offices?.map((office, i) => (
-                    <Box key={i} sx={{ maxWidth: '200px' }}>
+                    <Box key={i} sx={{ maxWidth: '200px', border: '1px solid #E6E2DD' }}>
                         <OfficeCard office={office}></OfficeCard>
                     </Box>
                 ))}

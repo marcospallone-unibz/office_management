@@ -26,43 +26,45 @@ const Login = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         var results = await login(formData);
-        if(results?.data?.code == 200){
-            if(window !== undefined){
+        if (results?.data?.code == 200) {
+            if (window !== undefined) {
                 console.log(results?.data)
                 localStorage.setItem('id', results?.data?.id)
                 localStorage.setItem('company', results?.data?.company)
             }
-            router.push('/om/dashboard?id='+results?.data?.id+'&company='+results?.data?.company)
+            router.push('/om/dashboard?id=' + results?.data?.id + '&company=' + results?.data?.company)
         } else {
             alert('ERRORE NELLA RICHIESTA')
         }
     };
 
     return (
-        <Box>
+        <Box sx={{ textAlign: 'center', marginTop: '2rem' }}>
             <h1 className="h1-title">Login</h1>
             <form onSubmit={handleSubmit}>
-                <Box sx={{padding: '1rem'}}>
-                    <Typography>Email:</Typography>
+                <Box sx={{ padding: '1rem' }}>
+                    <Typography>Email</Typography>
                     <input
                         name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        className="input"
                     />
                 </Box>
-                <Box sx={{padding: '1rem'}}>
-                    <Typography>Password:</Typography>
+                <Box sx={{ padding: '1rem' }}>
+                    <Typography>Password</Typography>
                     <input
                         name="password"
                         type="password"
                         value={formData.password}
                         onChange={handleChange}
                         required
+                        className="input"
                     />
                 </Box>
-                <Box sx={{padding: '1rem'}}><Button className='button' type="submit">LOGIN</Button></Box>
+                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">LOGIN</Button></Box>
             </form>
         </Box>
     );

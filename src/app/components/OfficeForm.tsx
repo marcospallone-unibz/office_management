@@ -50,37 +50,40 @@ const OfficeForm = (data: any) => {
     if (loading) return <Box sx={{ textAlign: 'center', marginTop: '5rem' }}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Box>
+        <Box sx={{textAlign: 'center'}}>
             <h1 className='h1-title'>Aggiungi Ufficio</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ padding: '1rem' }}>
-                    <Typography>Nome:</Typography>
+                    <Typography>Nome</Typography>
                     <input
                         name="name"
                         type="text"
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        className="input"
                     />
                 </Box>
                 <Box sx={{ padding: '1rem' }}>
-                    <Typography>Città:</Typography>
+                    <Typography>Città</Typography>
                     <input
                         name="city"
                         type="text"
                         value={formData.city}
                         onChange={handleChange}
                         required
+                        className="input"
                     />
                 </Box>
                 <Box sx={{ padding: '1rem' }}>
-                    <Typography>Indirizzo:</Typography>
+                    <Typography>Indirizzo</Typography>
                     <input
                         name="address"
                         type="text"
                         value={formData.address}
                         onChange={handleChange}
                         required
+                        className="input"
                     />
                 </Box>
                 <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Aggiungi Ufficio</Button></Box>

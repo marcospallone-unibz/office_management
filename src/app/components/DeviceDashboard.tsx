@@ -38,12 +38,13 @@ const DeviceDashboard = () => {
             state: !device?.state,
             deviceId: device?.id
         }
+        console.log(data)
         // setLoading(true)
         await updateDevice(data);
         location.reload()
     }
 
-    if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
+    if (loading) return <Box sx={{ textAlign: 'center', marginTop: '5rem' }}><CircularProgress></CircularProgress></Box>
 
     return (
         <Box sx={{ padding: '1rem' }}>

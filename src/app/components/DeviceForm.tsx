@@ -57,17 +57,18 @@ const DeviceForm = () => {
     if (loading) return <Box sx={{ textAlign: 'center', marginTop: '5rem' }}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Box>
+        <Box sx={{textAlign: 'center'}}>
             <h1 className="h1-title">Aggiungi dispositivo</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ padding: '1rem' }}>
-                    <Typography>Nome:</Typography>
+                    <Typography>Nome</Typography>
                     <input
                         name="name"
                         type="text"
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        className="input"
                     />
                 </Box>
                 <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Aggiungi</Button></Box>

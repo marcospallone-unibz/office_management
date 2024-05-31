@@ -20,8 +20,9 @@ const DeviceCard = ({ device }: any) => {
         let data = {
             id: device?.id
         }
-        setLoading(true);
+        // setLoading(true);
         await deleteDevice(data);
+        location.reload();
     }
 
     if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
