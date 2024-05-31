@@ -20,17 +20,24 @@ const DeviceForm = () => {
     });
 
     useEffect(() => {
-        setOfficeID(searchParams.get('id'))
-      }, [])
+        setOfficeID(searchParams.get('officeID'))
+    }, [])
+
+    useEffect(() => {
+        setFormData(prevState => ({
+            ...prevState,
+            office: officeID
+        }));
+    }, [officeID])
 
     useEffect(() => {
         if (loading) {
-          setTimeout(() => {
-          setLoading(false);
-          location.href = '/om/office?id=' + officeID;
-        }, 1800);
+            setTimeout(() => {
+                setLoading(false);
+                location.href = '/om/office?id=' + officeID;
+            }, 1800);
         }
-      }, [loading]);
+    }, [loading]);
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
@@ -47,7 +54,7 @@ const DeviceForm = () => {
         location.href = '/om/office?id=' + officeID;
     };
 
-    if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
+    if (loading) return <Box sx={{ textAlign: 'center', marginTop: '5rem' }}><CircularProgress></CircularProgress></Box>
 
     return (
         <Box>
