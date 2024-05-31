@@ -31,7 +31,7 @@ const Register = () => {
     };
 
     return (
-        <Box>
+        <Box sx={{textAlign: 'center'}}>
             <h1 className="h1-title">Registrazione</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ padding: '1rem' }}>

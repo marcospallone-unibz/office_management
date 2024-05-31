@@ -34,16 +34,14 @@ const OfficeDashboard = () => {
 
   return (
     <Box sx={{ padding: '1rem' }}>
-      <Button className="button" href={"/om/addDevice?officeID=" + searchParams.get('id')}>Aggiungi dispositivo</Button>
-      <Box sx={{ marginTop: '2rem' }}>
-        <Typography>Ufficio: {office?.name}</Typography>
-        <Typography>Città: {office?.city}</Typography>
-        <Typography>Indirizzo: {office?.address}</Typography>
+      <Box sx={{ textAlign: 'center' }}>
+        <Typography sx={{ textTransform: 'uppercase', fontWeight: 'bold' }}>{office?.name}</Typography>
+        <Typography sx={{ fontStyle: 'italic' }}>{office?.city}, {office?.address}</Typography>
       </Box>
-      <Box sx={{ marginTop: '3rem' }}>
-        <Typography>DISPOSITIVI:</Typography>
+      <Button className="button" href={"/om/addDevice?officeID=" + searchParams.get('id')} sx={{marginTop:'1rem'}}>Aggiungi dispositivo</Button>
+      <Box sx={{ marginTop: '2rem' }}>
         {devices?.map((device, i) => (
-          <Box key={i}>
+          <Box key={i} sx={{marginTop: '1rem', marginLeft: '1rem', maxWidth: '200px', border: '0.5px solid #E6E2DD', borderRadius: '10px' }}>
             <DeviceCard device={device}></DeviceCard>
           </Box>
         ))}

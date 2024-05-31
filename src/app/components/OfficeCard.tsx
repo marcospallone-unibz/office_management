@@ -21,7 +21,8 @@ const OfficeCard = (data: any) => {
         }
       }, [loading]);
 
-    const handleDelete = async () => {
+    const handleDelete = async (event:any) => {
+        event.stopPropagation();
         let data = {
             id: office?.id
         }
@@ -30,12 +31,16 @@ const OfficeCard = (data: any) => {
         location.reload();
     }
 
+    const navigate = () => {
+        location.href = '/om/office?id=' + office?.id
+    }
+
     if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Box>
-            <Box sx={{ padding: '1rem' }}>
-                <Box component={Link} href={'/om/office?id=' + office?.id}><Typography>{office?.name}</Typography></Box>
+        <Box component={'div'} onClick={navigate} sx={{textAlign:'center', padding:'1.5rem', cursor: 'pointer'}}>
+            <Box>
+                <Box><Typography>{office?.name}</Typography></Box>
                 <Box><Button className='button elimina' sx={{marginTop: '1rem'}} onClick={handleDelete}>Elimina</Button></Box>
             </Box>
         </Box>

@@ -31,9 +31,9 @@ const Dashboard = () => {
             <Box sx={{ padding: '1rem' }}>
                 <Button className="button" href={'/om/addOffice'}>Nuovo Ufficio</Button>
             </Box>
-            <Box sx={{ marginTop: '1rem', padding: '1rem' }}>
+            <Box sx={{ marginTop: '1rem', display: 'flex' }}>
                 {offices?.map((office, i) => (
-                    <Box key={i} sx={{ maxWidth: '200px', border: '1px solid #E6E2DD' }}>
+                    <Box key={i} sx={{ marginTop: '1rem', marginLeft: '1rem', maxWidth: '200px', border: '0.5px solid #E6E2DD', borderRadius: '10px' }}>
                         <OfficeCard office={office}></OfficeCard>
                     </Box>
                 ))}

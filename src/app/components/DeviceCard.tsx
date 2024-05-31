@@ -16,7 +16,8 @@ const DeviceCard = ({ device }: any) => {
         }
     }, [loading]);
 
-    const handleDelete = async () => {
+    const handleDelete = async (event:any) => {
+        event.stopPropagation();
         let data = {
             id: device?.id
         }
@@ -25,12 +26,16 @@ const DeviceCard = ({ device }: any) => {
         location.reload();
     }
 
+    const navigate = () => {
+        location.href = '/om/device?id=' + device.id
+    }
+
     if (loading) return <Box sx={{textAlign: 'center', marginTop:'5rem'}}><CircularProgress></CircularProgress></Box>
 
     return (
-        <Box>
+        <Box component={'div'} onClick={navigate} sx={{textAlign:'center'}}>
             <Box sx={{ padding: '1rem' }}>
-                <Box component={Link} href={'/om/device?id=' + device.id}><Typography>{device?.name}</Typography></Box>
+                <Box><Typography>{device?.name}</Typography></Box>
                 <Button className='button elimina' onClick={handleDelete}>Elimina</Button>
             </Box>
         </Box>
