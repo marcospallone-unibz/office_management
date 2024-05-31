@@ -1,7 +1,9 @@
+import Button from "@mui/material/Button";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { login } from "../utils/getAPIData";
-import { useRouter } from "next/navigation";
-import Dashboard from "./Dashboard";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 
 const Login = () => {
@@ -25,18 +27,23 @@ const Login = () => {
         e.preventDefault();
         var results = await login(formData);
         if(results?.data?.code == 200){
-            router.push('/om/dashboard?id='+results?.data?.id)
+            if(window !== undefined){
+                console.log(results?.data)
+                localStorage.setItem('id', results?.data?.id)
+                localStorage.setItem('company', results?.data?.company)
+            }
+            router.push('/om/dashboard?id='+results?.data?.id+'&company='+results?.data?.company)
         } else {
             alert('ERRORE NELLA RICHIESTA')
         }
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <Box>
+            <h1 className="h1-title">Login</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email:</label>
+                <Box sx={{padding: '1rem'}}>
+                    <Typography>Email:</Typography>
                     <input
                         name="email"
                         type="email"
@@ -44,9 +51,9 @@ const Login = () => {
                         onChange={handleChange}
                         required
                     />
-                </div>
-                <div>
-                    <label>Password:</label>
+                </Box>
+                <Box sx={{padding: '1rem'}}>
+                    <Typography>Password:</Typography>
                     <input
                         name="password"
                         type="password"
@@ -54,10 +61,10 @@ const Login = () => {
                         onChange={handleChange}
                         required
                     />
-                </div>
-                <button type="submit">LOGIN</button>
+                </Box>
+                <Box sx={{padding: '1rem'}}><Button className='button' type="submit">LOGIN</Button></Box>
             </form>
-        </div>
+        </Box>
     );
 };
 

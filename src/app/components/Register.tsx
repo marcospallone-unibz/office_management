@@ -1,6 +1,9 @@
+import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { register } from './../utils/getAPIData';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 
 const Register = () => {
@@ -9,7 +12,6 @@ const Register = () => {
 
     const [formData, setFormData] = useState({
         name: '',
-        surname: '',
         email: '',
         password: ''
     });
@@ -24,20 +26,16 @@ const Register = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        var results = await register(formData);
-        if(results?.data?.code == 200){
-            router.push('/')
-        } else {
-            alert('ERRORE NELLA RICHIESTA')
-        }
+        await register(formData);
+        router.push('/')
     };
 
     return (
-        <div>
-            <h1>Create User</h1>
+        <Box>
+            <h1 className="h1-title">Registrazione</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name:</label>
+                <Box sx={{padding: '1rem'}}>
+                    <Typography>Nome:</Typography>
                     <input
                         name="name"
                         type="text"
@@ -45,19 +43,9 @@ const Register = () => {
                         onChange={handleChange}
                         required
                     />
-                </div>
-                <div>
-                    <label>Surname:</label>
-                    <input
-                        name="surname"
-                        type="text"
-                        value={formData.surname}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Email:</label>
+                </Box>
+                <Box sx={{padding: '1rem'}}>
+                    <Typography>Email:</Typography>
                     <input
                         name="email"
                         type="email"
@@ -65,9 +53,9 @@ const Register = () => {
                         onChange={handleChange}
                         required
                     />
-                </div>
-                <div>
-                    <label>Password:</label>
+                </Box>
+                <Box sx={{padding: '1rem'}}>
+                    <Typography>Password:</Typography>
                     <input
                         name="password"
                         type="password"
@@ -75,10 +63,10 @@ const Register = () => {
                         onChange={handleChange}
                         required
                     />
-                </div>
-                <button type="submit">REGISTRATI</button>
+                </Box>
+                <Box sx={{padding: '1rem'}}><Button className='button' type="submit">REGISTRATI</Button></Box>
             </form>
-        </div>
+        </Box>
     );
 };
 
