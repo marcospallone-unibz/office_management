@@ -3,12 +3,10 @@ import { useEffect, useState } from "react";
 import { newDevice } from '../utils/getAPIData';
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
 import { useSearchParams } from "next/navigation";
 
 const DeviceForm = () => {
 
-    const [loading, setLoading] = useState(false);
     const [officeID, setOfficeID] = useState<any>(null);
 
     const searchParams = useSearchParams();
@@ -30,15 +28,6 @@ const DeviceForm = () => {
         }));
     }, [officeID])
 
-    useEffect(() => {
-        if (loading) {
-            setTimeout(() => {
-                setLoading(false);
-                location.href = '/om/office?id=' + officeID;
-            }, 1800);
-        }
-    }, [loading]);
-
     const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -49,19 +38,16 @@ const DeviceForm = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        // setLoading(true);
         await newDevice(formData);
         location.href = '/om/office?id=' + officeID;
     };
 
-    if (loading) return <Box sx={{ textAlign: 'center', marginTop: '5rem' }}><CircularProgress></CircularProgress></Box>
-
     return (
-        <Box sx={{textAlign: 'center'}}>
-            <h1 className="h1-title">Aggiungi dispositivo</h1>
+        <Box sx={{ textAlign: 'center' }}>
+            <h1 className="h1-title">Add Device</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ padding: '1rem' }}>
-                    <Typography>Nome</Typography>
+                    <Typography>Name</Typography>
                     <input
                         name="name"
                         type="text"
@@ -71,7 +57,7 @@ const DeviceForm = () => {
                         className="input"
                     />
                 </Box>
-                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Aggiungi</Button></Box>
+                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Add</Button></Box>
             </form>
         </Box>
     );

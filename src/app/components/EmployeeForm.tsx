@@ -1,14 +1,17 @@
-import { Box, Button, Typography } from '@mui/material';
-import { useState } from 'react';
-import { newOffice } from '../utils/getAPIData';
+import Button from "@mui/material/Button";
+import { useState } from "react";
+import { newEmployee } from './../utils/getAPIData';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-const OfficeForm = () => {
+
+const EmployeeForm = () => {
 
     const [formData, setFormData] = useState({
         name: '',
-        city: '',
-        address: '',
-        company: typeof window !== 'undefined' ? localStorage.getItem('company') : null
+        email: '',
+        phone: '',
+        company: typeof window != 'undefined' ? localStorage.getItem('company') : null
     });
 
     const handleChange = (e: any) => {
@@ -21,13 +24,13 @@ const OfficeForm = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        await newOffice(formData);
-        location.href = '/om/dashboard?id=' + localStorage.getItem('company');
+        await newEmployee(formData);
+        location.href = '/om/employees'
     };
 
     return (
         <Box sx={{ textAlign: 'center' }}>
-            <h1 className='h1-title'>Add office</h1>
+            <h1 className="h1-title">Add employee</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ padding: '1rem' }}>
                     <Typography>Name</Typography>
@@ -41,31 +44,31 @@ const OfficeForm = () => {
                     />
                 </Box>
                 <Box sx={{ padding: '1rem' }}>
-                    <Typography>City</Typography>
+                    <Typography>Email</Typography>
                     <input
-                        name="city"
-                        type="text"
-                        value={formData.city}
+                        name="email"
+                        type="email"
+                        value={formData.email}
                         onChange={handleChange}
                         required
                         className="input"
                     />
                 </Box>
                 <Box sx={{ padding: '1rem' }}>
-                    <Typography>Address</Typography>
+                    <Typography>Phone</Typography>
                     <input
-                        name="address"
+                        name="phone"
                         type="text"
-                        value={formData.address}
+                        value={formData.phone}
                         onChange={handleChange}
                         required
                         className="input"
                     />
                 </Box>
-                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Add office</Button></Box>
+                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Add employee</Button></Box>
             </form>
         </Box>
     );
 };
 
-export default OfficeForm;
+export default EmployeeForm;

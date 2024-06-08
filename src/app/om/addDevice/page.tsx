@@ -3,7 +3,6 @@
 import DeviceForm from "@/app/components/DeviceForm";
 import Header from "@/app/components/Header";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 

@@ -111,7 +111,7 @@ a {
 .elimina {
   padding: 5px !important;
   margin-top: 0.75rem !important;
-  min-width: 90px !important;
+  min-width: 30px !important;
   background-color: #AE371F !important;
 
   &:hover {
@@ -123,10 +123,10 @@ a {
   padding: 0rem !important;
   margin-top: 0.4rem !important;
   min-width: 70px !important;
-  background-color: #32de84 !important;
+  background-color: #17B169 !important;
 
   &:hover {
-    background-color: #17B169 !important;
+    background-color: #018749 !important;
   }
 }
 
@@ -134,7 +134,7 @@ a {
   padding: 0rem !important;
   margin-top: 0.4rem !important;
   min-width: 70px !important;
-  background-color: #E32636 !important;
+  background-color: #AE371F !important;
 
   &:hover {
     background-color: #D2122E !important;
@@ -166,4 +166,85 @@ a {
   border-radius: 10px;
   color: #E6E2DD;
   margin-top: 10px;
+}
+
+.modal {
+  text-align: center;
+  max-height: 300px;
+  width: 500px;
+  margin: auto;
+  border: 1px solid #D48166;
+}
+
+.modal-inner-box {
+  background-color: #373A36;
+  padding: 2rem;
+  height: -webkit-fill-available;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.download {
+  background-color: #17B169 !important;
+
+  &:hover {
+    background-color: #018749 !important;
+  }
+}
+
+.rootDG {
+  border: 0;
+}
+
+.employee-modal {
+  max-height: 530px;
+  width: 700px;
+}
+
+.cell {
+  color: #E6E2DD;
+
+  &:focus {
+    outline: 0 !important;
+  }
+}
+
+.columnHeader {
+  background-color: #373A36;
+  color: #E6E2DD
+}
+
+.footerContainer {
+  border: 0
+}
+
+.row {
+  &:hover {
+    background-color: #343a40;
+  }
+}
+
+.MuiTablePagination-root,
+.MuiSelect-icon,
+.MuiTablePagination-actions .MuiIconButton-root,
+.MuiDataGrid-sortIcon {
+  color: #E6E2DD;
+}
+
+.columnHeaderTitle {
+  font-weight: bold;
+}
+
+.MuiDataGrid-overlay {
+  background-color: #373A36;
+  color: #E6E2DD;
+}
+
+.MuiLink-root {
+  color: #D48166;
+  text-decoration-color: transparent;
 }

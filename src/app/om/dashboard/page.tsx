@@ -7,8 +7,8 @@ export default function CompanyHome() {
 
   return (
     <>
-    <Header></Header>
-    <Dashboard></Dashboard>
+      <Header></Header>
+      <Dashboard></Dashboard>
     </>
   );
 }

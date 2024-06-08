@@ -28,8 +28,8 @@ const Login = () => {
         var results = await login(formData);
         if (results?.data?.code == 200) {
             if (window !== undefined) {
-                console.log(results?.data)
                 localStorage.setItem('id', results?.data?.id)
+                localStorage.setItem('name', results?.data?.name)
                 localStorage.setItem('company', results?.data?.company)
             }
             router.push('/om/dashboard?id=' + results?.data?.id + '&company=' + results?.data?.company)
@@ -40,7 +40,7 @@ const Login = () => {
 
     return (
         <Box sx={{ textAlign: 'center', marginTop: '2rem' }}>
-            <h1 className="h1-title">Login</h1>
+            <h1 className="h1-title">Sign in</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ padding: '1rem' }}>
                     <Typography>Email</Typography>
@@ -64,7 +64,7 @@ const Login = () => {
                         className="input"
                     />
                 </Box>
-                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">LOGIN</Button></Box>
+                <Box sx={{ padding: '1rem' }}><Button className='button' type="submit">Sign In</Button></Box>
             </form>
         </Box>
     );
